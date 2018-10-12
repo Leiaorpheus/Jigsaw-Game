@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PieceMovement : MonoBehaviour {
 
+    public bool canIdle;
     public bool placed;
     public Transform edgeParticles; // edge prefab
     public AudioSource source;
@@ -19,7 +20,7 @@ public class PieceMovement : MonoBehaviour {
     void Update () {
 
         // move the puzzle with mouse movement
-        if (!placed)
+        if (!placed && canIdle)
         {
             Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             Vector2 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -41,6 +42,8 @@ public class PieceMovement : MonoBehaviour {
             // if placed correctly 
             if (other.gameObject.name == gameObject.name)
             {
+                other.GetComponent<BoxCollider2D>().enabled = false;
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 transform.position = other.gameObject.transform.position;
                 source.clip = correct;
                 source.pitch = 1;
@@ -66,5 +69,11 @@ public class PieceMovement : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D other)
     {
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+    }
+
+
+    private void OnMouseDown()
+    {
+        canIdle = true;
     }
 }

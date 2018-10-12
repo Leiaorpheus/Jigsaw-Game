@@ -152,7 +152,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.84, y: 2.16}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &312627422
 Transform:
@@ -361,13 +361,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a332fae3889274eafd15ef62208dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canIdle: 0
   placed: 0
   edgeParticles: {fileID: 4500315714766466, guid: 6dcec7e1b9bf27547aeb7f73e2928902,
     type: 2}
   source: {fileID: 946461537}
   correct: {fileID: 8300000, guid: 51cfa9c2da75f814da0be003a14e4ff5, type: 3}
   wrong: {fileID: 8300000, guid: 6a340ff83f7e4324d83a5672a897fce0, type: 3}
-  placePiece: 323
+  placePiece: 324
   mouseClicked: 0
 --- !u!50 &946461536
 Rigidbody2D:
@@ -508,7 +509,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.84, y: 2.16}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &1373476113
 Transform:
