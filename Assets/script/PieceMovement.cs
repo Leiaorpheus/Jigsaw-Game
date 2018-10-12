@@ -50,16 +50,22 @@ public class PieceMovement : MonoBehaviour {
                 source.volume = 0.02f;
                 source.Play();
                 Instantiate(edgeParticles, other.gameObject.transform.position, Quaternion.identity); //spawn
+                GetComponent<Renderer>().sortingOrder = 0; // moving layer on botton
                 placed = true;
                 mouseClicked = false; // mouse click set to false
             } else
             {
-                source.clip = wrong;
-                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
-                source.volume = 0.2f;
-                source.pitch = 5;
-                source.Play();
-                mouseClicked = false;
+                // i.e. collide with collider box
+                if (other.gameObject.GetComponent<Rigidbody2D>() == null)
+                {
+                    source.clip = wrong;
+                    GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+                    source.volume = 0.2f;
+                    source.pitch = 5;
+                    source.Play();
+                    mouseClicked = false;
+                }
+                
             }
             
         }
@@ -75,5 +81,7 @@ public class PieceMovement : MonoBehaviour {
     private void OnMouseDown()
     {
         canIdle = true;
+        GetComponent<Renderer>().sortingOrder = 10; // moving layer on top
+        mouseClicked = false;
     }
 }
