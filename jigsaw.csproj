@@ -288,10 +288,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Inventory.cs" />
-    <Compile Include="Assets\ReturnPiece.cs" />
+    <Compile Include="Assets\script\checkWin.cs" />
+    <Compile Include="Assets\script\Inventory.cs" />
     <Compile Include="Assets\script\PieceMovement.cs" />
-    <Compile Include="Assets\Scroller.cs" />
+    <Compile Include="Assets\script\ReturnPiece.cs" />
+    <Compile Include="Assets\script\Scroller.cs" />
+    <Compile Include="Assets\script\SequenceAnimator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

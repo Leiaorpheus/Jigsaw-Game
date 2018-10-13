@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   returnPiece: 32
+  initialPicked: 0
   piecePosition: {x: 0, y: 0}
 --- !u!114 &114130582282562370
 MonoBehaviour:
@@ -217,6 +218,9 @@ MonoBehaviour:
   wrong: {fileID: 8300000, guid: 6a340ff83f7e4324d83a5672a897fce0, type: 3}
   placePiece: 324
   mouseClicked: 0
+  score: {fileID: 0}
+  addScore: 20
+  reduceScore: 10
 --- !u!212 &212269778396347290
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PieceMovement : MonoBehaviour {
 
     public bool canIdle;
@@ -14,8 +15,21 @@ public class PieceMovement : MonoBehaviour {
     public KeyCode placePiece; // keycode to check if piece has been placed
     public bool mouseClicked; // whether mouse is clicked
 
+    [SerializeField]
+    GameObject score;
 
-   
+    static int total;
+
+    public int addScore;
+    public int reduceScore;
+
+    // find score object
+    private void Start()
+    {
+        score = GameObject.Find("userScore");
+        total = System.Convert.ToInt32(score.GetComponent<TextMesh>().text.ToString());
+    }
+
     // Update is called once per frame
     void Update () {
 
@@ -50,9 +64,18 @@ public class PieceMovement : MonoBehaviour {
                 source.volume = 0.02f;
                 source.Play();
                 Instantiate(edgeParticles, other.gameObject.transform.position, Quaternion.identity); //spawn
+
+                // add score
+                total += addScore;
+                score.GetComponent<TextMesh>().text = total.ToString();
+
+
                 GetComponent<Renderer>().sortingOrder = 5; // moving layer on botton
                 placed = true;
                 mouseClicked = false; // mouse click set to false
+
+                // remove a piece
+                GameObject.Find("ifWin").GetComponent<checkWin>().total -= 1;
             } else
             {
                 // i.e. collide with collider box
@@ -63,6 +86,12 @@ public class PieceMovement : MonoBehaviour {
                     source.volume = 0.2f;
                     source.pitch = 5;
                     source.Play();
+
+                    // add score
+                    total -= reduceScore;
+                    total = (total < 0) ? 0 : total;
+                    score.GetComponent<TextMesh>().text = total.ToString();
+
                     mouseClicked = false;
                 }
                 
