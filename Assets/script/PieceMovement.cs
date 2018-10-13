@@ -50,7 +50,7 @@ public class PieceMovement : MonoBehaviour {
                 source.volume = 0.02f;
                 source.Play();
                 Instantiate(edgeParticles, other.gameObject.transform.position, Quaternion.identity); //spawn
-                GetComponent<Renderer>().sortingOrder = 0; // moving layer on botton
+                GetComponent<Renderer>().sortingOrder = 5; // moving layer on botton
                 placed = true;
                 mouseClicked = false; // mouse click set to false
             } else
