@@ -19,16 +19,30 @@ public class Scroller : MonoBehaviour {
 
     void scoll()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0 && !GetComponent<PieceMovement>().canIdle)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            transform.position = new Vector2(transform.position.x, transform.position.y + scrollDistance);
-            yDiff += scrollDistance;
+            if (!GetComponent<PieceMovement>().canIdle)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y + scrollDistance);
+            } else
+            {
+                yDiff += scrollDistance;
+            }
+            
+            
         }
 
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && !GetComponent<PieceMovement>().canIdle)
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-            transform.position = new Vector2(transform.position.x, transform.position.y - scrollDistance);
-            yDiff -= scrollDistance;
+            if (!GetComponent<PieceMovement>().canIdle)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y - scrollDistance);
+            } else
+            {
+                yDiff -= scrollDistance;
+            }
+            
+            
         }
     }
 }

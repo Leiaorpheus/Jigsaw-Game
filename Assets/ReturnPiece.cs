@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ReturnPiece : MonoBehaviour {
     public KeyCode returnPiece;
-
+    public bool initialPicked;
    
     public Vector2 piecePosition;
 
@@ -21,6 +21,11 @@ public class ReturnPiece : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        piecePosition = transform.position;
+        if (!initialPicked)
+        {
+            piecePosition = transform.position;
+            initialPicked = true; // only record initial position once
+        }
+       
     }
 }
